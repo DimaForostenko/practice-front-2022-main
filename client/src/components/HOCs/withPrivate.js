@@ -4,14 +4,14 @@ import { Redirect } from 'react-router-dom';
 import { getUserAction } from '../../actions/actionCreator';
 import Spinner from '../Spinner/Spinner';
 
-const WithPrivate = (Component, props) => {
+const withPrivate = (Component, props) => {
   const mapStateToProps = (state) => state.userStore;
 
   const mapDispatchToProps = (dispatch) => ({
     getUser: (data) => dispatch(getUserAction(data)),
   });
 
-  class Hoc extends React.Component {
+  class withUser extends React.Component {
     componentDidMount() {
       if (!this.props.data) {
         this.props.getUser(this.props.history.replace);
@@ -31,7 +31,7 @@ const WithPrivate = (Component, props) => {
     }
   }
 
-  return connect(mapStateToProps, mapDispatchToProps)(Hoc);
+  return connect(mapStateToProps, mapDispatchToProps)(withUser );
 };
 
-export default WithPrivate;
+export default withPrivate; 

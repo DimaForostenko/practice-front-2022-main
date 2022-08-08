@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import styles from './Header.module.sass';
 import CONSTANTS from '../../constants';
-import { getUserAction, clearUserStore, headerRequest } from '../../actions/actionCreator';
+import {  clearUserStore, headerRequest } from '../../actions/actionCreator';
 import Logo from '../Logo';
 
 class Header extends React.Component {
@@ -101,27 +101,30 @@ class Header extends React.Component {
             <div className={styles.leftNav}>
               <div className={styles.nav}>
                 <ul>
+                  <li><span>
+                  <Link to='/price'>Price </Link>
+                  </span></li>
                   <li>
-                    <span>NAME IDEAS</span>
+                    <span>Name Ideas</span>
                     <img
                       src={`${CONSTANTS.STATIC_IMAGES_PATH}menu-down.png`}
                       alt="menu"
                     />
                     <ul>
-                      <li><a href="http://www.google.com">Beauty</a></li>
-                      <li><a href="http://www.google.com">Consulting</a></li>
-                      <li><a href="http://www.google.com">E-Commerce</a></li>
-                      <li><a href="http://www.google.com">Fashion & Clothing</a></li>
-                      <li><a href="http://www.google.com">Finance</a></li>
-                      <li><a href="http://www.google.com">Real Estate</a></li>
-                      <li><a href="http://www.google.com">Tech</a></li>
+                      <li><a href="http://www.google.com">BEAUTY</a></li>
+                      <li><a href="http://www.google.com">CONSULTING</a></li>
+                      <li><a href="http://www.google.com">E-COMMERS</a></li>
+                      <li><a href="http://www.google.com">FASHION & CLOTHING</a></li>
+                      <li><a href="http://www.google.com">FINANCE</a></li>
+                      <li><a href="http://www.google.com">REAL ESTATE</a></li>
+                      <li><a href="http://www.google.com">TEAC</a></li>
                       <li className={styles.last}>
-                        <a href="http://www.google.com">More Categories</a>
+                        <a href="http://www.google.com">MORE CATEGORIES</a>
                       </li>
                     </ul>
                   </li>
                   <li>
-                    <span>CONTESTS</span>
+                    <span>Contents</span>
                     <img
                       src={`${CONSTANTS.STATIC_IMAGES_PATH}menu-down.png`}
                       alt="menu"

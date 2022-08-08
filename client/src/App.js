@@ -7,10 +7,9 @@ import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
 import Payment from './pages/Payment/Payment';
 import StartContestPage from './pages/StartContestPage/StartContestPage';
 import Dashboard from './pages/Dashboard/Dashboard';
-import WithPrivate from './components/HOCs/withPrivate';
 import NotFound from './components/NotFound/NotFound';
 import Home from './pages/Home/Home';
-import WithNotAuthorizedUser from './components/HOCs/withNotAuthorizedUser';
+import { withNotAuthorizedUser, withPrivate} from './components/HOCs';
 import ContestPage from './pages/ContestPage/ContestPage';
 import UserProfile from './pages/UserProfile/UserProfile';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,6 +17,7 @@ import ContestCreationPage from './pages/ContestCreation/ContestCreationPage';
 import CONSTANTS from './constants';
 import browserHistory from './browserHistory';
 import ChatContainer from './components/Chat/ChatComponents/ChatContainer/ChatContainer';
+import PricePage from './pages/PricePage';
 
 class App extends Component {
   render() {
@@ -36,14 +36,15 @@ class App extends Component {
         />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={WithNotAuthorizedUser(LoginPage)} />
-          <Route exact path="/registration" component={WithNotAuthorizedUser(RegistrationPage)} />
-          <Route exact path="/payment" component={WithPrivate(Payment)} />
-          <Route exact path="/startContest" component={WithPrivate(StartContestPage)} />
+          <Route exact path="/price" component={PricePage} />
+          <Route exact path="/login" component={withNotAuthorizedUser(LoginPage)} />
+          <Route exact path="/registration" component={withNotAuthorizedUser(RegistrationPage)} />
+          <Route exact path="/payment" component={withPrivate(Payment)} />
+          <Route exact path="/startContest" component={withPrivate(StartContestPage)} />
           <Route
             exact
             path="/startContest/nameContest"
-            component={WithPrivate(ContestCreationPage, {
+            component={withPrivate(ContestCreationPage, {
               contestType: CONSTANTS.NAME_CONTEST,
               title: 'Company Name',
             })}
@@ -51,7 +52,7 @@ class App extends Component {
           <Route
             exact
             path="/startContest/taglineContest"
-            component={WithPrivate(ContestCreationPage, {
+            component={withPrivate(ContestCreationPage, {
               contestType: CONSTANTS.TAGLINE_CONTEST,
               title: 'TAGLINE',
             })}
@@ -59,14 +60,14 @@ class App extends Component {
           <Route
             exact
             path="/startContest/logoContest"
-            component={WithPrivate(ContestCreationPage, {
+            component={withPrivate(ContestCreationPage, {
               contestType: CONSTANTS.LOGO_CONTEST,
               title: 'LOGO',
             })}
           />
-          <Route exact path="/dashboard" component={WithPrivate(Dashboard)} />
-          <Route exact path="/contest/:id" component={WithPrivate(ContestPage)} />
-          <Route exact path="/account" component={WithPrivate(UserProfile)} />
+          <Route exact path="/dashboard" component={withPrivate(Dashboard)} />
+          <Route exact path="/contest/:id" component={withPrivate(ContestPage)} />
+          <Route exact path="/account" component={withPrivate(UserProfile)} />
           <Route component={NotFound} />
         </Switch>
         <ChatContainer />
